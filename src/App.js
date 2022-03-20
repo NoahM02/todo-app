@@ -21,6 +21,10 @@ function reducer(todos, action) {
         }
         return todo;
       });
+    case ACTIONS.REMOVE:
+      return todos.filter((todo) => {
+        return todo.id !== action.payload.id;
+      });
   }
 }
 
@@ -48,9 +52,11 @@ function App() {
           onChange={(e) => setName(e.target.value)}
         ></input>
       </form>
-      {todos.map((todo) => {
-        return <ToDo key={todo.id} todo={todo} dispatch={dispatch} />;
-      })}
+      <div className="todo-area">
+        {todos.map((todo) => {
+          return <ToDo key={todo.id} todo={todo} dispatch={dispatch} />;
+        })}
+      </div>
     </div>
   );
 }
