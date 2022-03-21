@@ -4,6 +4,15 @@ import { FcCheckmark } from 'react-icons/fc';
 import { IoClose } from 'react-icons/io5';
 
 export default function ToDo({ todo, dispatch }) {
+  function changeDate() {
+    let date = new Intl.DateTimeFormat('en-US', {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+    }).format(todo.id);
+    return date;
+  }
+
   return (
     <div className="single-todo">
       <span
@@ -12,7 +21,7 @@ export default function ToDo({ todo, dispatch }) {
       >
         {todo.name}
       </span>
-      {/* <div className="icon-area"></div> */}
+      <span>{changeDate()}</span>
       <FcCheckmark
         className="icons toggle"
         onClick={() =>
@@ -24,7 +33,7 @@ export default function ToDo({ todo, dispatch }) {
         onClick={() =>
           dispatch({ type: ACTIONS.REMOVE, payload: { id: todo.id } })
         }
-      ></IoClose>
+      />
     </div>
   );
 }

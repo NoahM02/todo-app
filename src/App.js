@@ -1,4 +1,4 @@
-import { useReducer, useState } from 'react';
+import { useReducer, useState, useEffect } from 'react';
 import './App.css';
 import ToDo from './ToDo';
 
@@ -33,7 +33,10 @@ function newToDo(name) {
 }
 
 function App() {
-  const [todos, dispatch] = useReducer(reducer, []);
+  const [todos, dispatch] = useReducer(
+    reducer,
+    JSON.parse(localStorage.getItem('todo'))
+  );
   const [name, setName] = useState('');
 
   function handleSubmit(e) {
@@ -41,6 +44,10 @@ function App() {
     dispatch({ type: ACTIONS.ADD, payload: { name: name } });
     setName('');
   }
+
+  useEffect(() => {
+    localStorage.setItem('todo', JSON.stringify(todos));
+  }, [todos]);
 
   return (
     <div className="App">

@@ -11,7 +11,6 @@
   width: 650px;
   height: 450px;
   background-color: white;
-  /* background-color: #eeeeee; */
   background: #e0e0e0;
   border-radius: 15px;
   box-shadow: 34px 34px 68px #bebebe, -34px -34px 68px #ffffff;
@@ -25,7 +24,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  /* background-color: lightseagreen; */
 }
 
 .icons {
@@ -45,10 +43,13 @@
   width: 20%;
   display: flex;
   justify-content: start;
-  /* text-decoration: line-through; */
 }
 
 .delete {
   font-size: 24px;
   color: red;
+}
+
+.change {
+  /* color: orange; */
 }
